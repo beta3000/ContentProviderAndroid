@@ -53,18 +53,26 @@ public class ClientesProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(Uri uri) {
-        return null;
+        int match = URI_MATCHER.match(uri);
+
+        switch (match) {
+            case CLIENTES:
+                return "vnd.android.cursor.dir/vnd.google.cliente";
+            case CLIENTES_ID:
+                return "vnd.android.cursor.item/vnd.google.cliente";
+            default:
+                return null;
+        }
     }
 
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        long regId = 1;
+        long regId;
         SQLiteDatabase access = db.getWritableDatabase();
         regId = access.insert(TABLA_NOMBRE, null, values);
-        Uri newUri = ContentUris.withAppendedId(CONTENT_URI, regId);
 
-        return newUri;
+        return ContentUris.withAppendedId(CONTENT_URI, regId);
     }
 
     @Override
