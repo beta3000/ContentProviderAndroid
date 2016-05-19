@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ContentProviderAndroid</string>
+    <!--Botones-->
+    <string name="btnInsertar">Insertar</string>
+    <string name="btnConsultar">Consultar</string>
+    <string name="btnEliminar">Eliminar</string>
 </resources>
